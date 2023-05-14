@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Queue Logs</title>
+  <style>
+    #logs {
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Task Queue Logs</h1>
+  <div id="logs"></div>
+
+  <script>
+    const logsDiv = document.getElementById('logs');
+    const socket = new WebSocket('ws://localhost:3000');
+  
+    socket.onmessage = function(event) {
+      const log = event.data;
+      logsDiv.textContent += log + '\n';
+    };
+  </script>
+</body>
+</html>
